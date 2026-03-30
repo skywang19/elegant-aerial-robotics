@@ -371,9 +371,47 @@ todo
 
 ## 3.8 Novel/Morphing Design 新构型设计/变形无人机
 
-todo
+变形无人机的设计和控制是一条相对来说较小众的赛道。对于变形无人机的分类，可以从不同的维度进行划分：
 
+- 按照是否使用驱动器进行主动控制，可以分为主动变形和被动变形；
+- 按照变形在几何上的方向，可以分为垂直折叠机臂、平面内旋转机臂、平面内收缩机臂等。广义上，多关节异构无人机和模块化无人机也可以视作一种变形；
+- 按照变形的目的，可以分为抓取、栖息，以及通过变形实现机身尺寸变化穿过狭窄通道、适应环境等。通常一个变形无人机工作会实现1~3个功能不等。
+  * 部分研究进一步加入了可以充分发挥适应环境能力的规划方法，将变形无人机的研究从偏向底层控制提升到了更高层的规划与决策。
 
+变形无人机也和软体无人机、模块化无人机设计等方向高度相关，但是不具有绝对的从属关系，如：使用软体材料制作的变形无人机可能是主动变形，也可能是被动变形，软体只是实现柔韧机身设计的一种途径。
+
+以下是一些经典工作的列举（配合论文附图和附加材料阅读会更清楚）：
+
+<section id="active-morphing"></section>
+
+### 3.8.1 Active Morphing 主动变形
+
+- [Falanga, Davide, et al. "The foldable drone: A morphing quadrotor that can squeeze and fly." RAL (2018)](https://ieeexplore.ieee.org/document/8567932) **RPG UZH**，变形无人机先驱工作，主动变形，通过在机臂末端安装四个舵机，机臂可在平面内绕机身中心旋转。
+  - [Cui, Guiyang, et al. "Motion planning and control of a morphing quadrotor in restricted scenarios." RAL (2024)](https://ieeexplore.ieee.org/abstract/document/8567932) 类似的变形结构，提出了融合变形能力的路径规划方法。
+- [Wu, Yuze, et al. "Ring-rotor: A novel retractable ring-shaped quadrotor with aerial grasping and transportation capability." RAL (2023)](https://ieeexplore.ieee.org/abstract/document/10044964/) **FastLab**，主动变形，通过舵机和绳拉驱动，机身在平面内收缩并利用中空结构实现抓取等功能。
+  - [Wu, Yuze, et al. "Shape-Adaptive Planning and Control for a Deformable Quadrotor." *IROS 2025*](https://ieeexplore.ieee.org/abstract/document/11245898) 同作者续作，提出了融合变形能力的路径规划方法。
+- [Xu, Mengxin, et al. "Biomimetic morphing quadrotor inspired by eagle claw for dynamic grasping." TRO (2024)](https://ieeexplore.ieee.org/document/10495172) 主动变形，仿生鹰爪结构设计，机身中心安装舵机实现机臂垂直折叠，具备动态抓取等能力。
+  - [Yeh, Tingyu, et al. "Design and control of an actively morphing quadrotor with vertically foldable arms." *2025 IROS*](https://ieeexplore.ieee.org/abstract/document/11247663) 同实验室续作，相似变形结构
+
+<section id="passive-morphing"></section>
+
+### 3.8.2 Passive Morphing 被动变形
+
+- [Jia, Huaiyuan, et al. "Aerial manipulation via modular quadrotors with passively foldable airframes." TMECH (2023)](https://ieeexplore.ieee.org/abstract/document/10142213) 无额外驱动器，机臂被动垂直折叠，同时实现了基于静态对接的模块化无人机抓取。
+- [Bucki, Nathan, et al. "Design and control of a midair-reconfigurable quadcopter using unactuated hinges." TRO (2022)](https://ieeexplore.ieee.org/abstract/document/9866833) **HiPeRLab UC Berkeley**，无额外驱动器，机臂被动垂直折叠，设计十分巧妙，解决了垂直折叠后控制自由度缺失的问题
+- [Patnaik, Karishma, et al. "Design and Control of SQUEEZE: A Spring-augmented QUadrotor for intEractions with the Environment to squeeZE-and-fly." *IROS 2020*](https://ieeexplore.ieee.org/abstract/document/9341730) 被动变形无人机经典工作，机臂末端安装弹簧实现被动变形，对狭窄环境的被动适应
+  - [Patnaik, Karishma, et al. "Tactile-Based Exploration, Mapping, and Navigation With Collision-Resilient Aerial Vehicles." TMECH (2025)](https://ieeexplore.ieee.org/abstract/document/11037250) 同作者续作，用被动变形无人机实现对未知环境基于接触的探索
+- [Xu, Mengxin, et al. "A Passive Morphing Soft Quadrotor for Physical Interaction in Constrained Environments." TAES (2026).](https://ieeexplore.ieee.org/abstract/document/11370214) 被动变形，利用软体材料搭建机身，实现对可通行性未知环境的被动适应
+- [Q. N. Pham, et al. "HoLoArm: Deformable Arms for Collision-Tolerant Quadrotor Flight," RAL 2026](https://ieeexplore.ieee.org/abstract/document/11361075) 被动变形新作，仿蜻蜓设计软体机臂关节
+
+<section id="board-morphing"></section>
+
+### 3.8.3  Boardly-speaking Morphing 广义变形无人机
+
+- [M. Zhao, et al. "Design, Modeling, and Control of an Aerial Robot DRAGON: A Dual-Rotor-Embedded Multilink Robot With the Ability of Multi-Degree-of-Freedom Aerial Transformation." RAL (2018)](https://ieeexplore.ieee.org/document/8258850) **Mujo Zhao, DragonLab**，多关节变形无人机
+- [Anzai, Tomoki, et al. "Aerial grasping based on shape adaptive transformation by halo: Horizontal plane transformable aerial robot with closed-loop multilinks structure." *2018 ICRA*](https://ieeexplore.ieee.org/abstract/document/8460928) **DragonLab**，单元旋翼模块实现组合变形抓取
+- [Sugihara, Junichiro, et al. "Beatle—self-reconfigurable aerial robot: Design, control and experimental validation." TMECH (2024)](https://ieeexplore.ieee.org/abstract/document/10723086) **DragonLab**，模块化无人机空中对接组合
+- [B. Gabrich,  et al. "A Flying Gripper Based on Cuboid Modular Robots," *2018 ICRA*](https://ieeexplore.ieee.org/document/8460682) **GRASP Laboratory UPenn**，模块化无人机，通过外框架磁吸连接实现中空结构抓取
 
 <section id="tech-stack"></section>
 
